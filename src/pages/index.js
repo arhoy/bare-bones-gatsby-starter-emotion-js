@@ -1,21 +1,18 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react';
+import Layout from '../layouts/Layout';
+import SEO from '../hooks/SEO';
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+const IndexPage = () => {
+  return (
+    <Layout>
+      <SEO
+        title="My Emotion JS Barebones Starter Tempalte"
+        description="This is a starter template that uses the barebones popular default starter with the addition of Emotion JS, Google Fonts, Google Analytics with an example SEO Hooks and starter Layout.js file"
+      />
+      <h1>Gatsby With Emotion.js</h1>
+      <p>Welcome to the Gatsby Starter File with Emotion JS</p>
+    </Layout>
+  );
+};
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
-
-export default IndexPage
+export default IndexPage;

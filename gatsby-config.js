@@ -1,8 +1,24 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
+// Define site URL here
+let URL;
+if (process.env.NODE_ENV === 'production') {
+  URL = 'https://example.com';
+} else {
+  URL = 'http://localhost:8000';
+}
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Gatsby Emotion Starter`,
+    description: `A simple Gatsby Starter with Emotion and Layout File, Google Analytics and Google Fonts`,
+    author: `Alex Quasar`,
+    twitterUsername: '@_aquasar',
+    image: '/default.png',
+    url: URL,
+    siteUrl: URL,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -15,6 +31,10 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-emotion`,
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -27,8 +47,22 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Poppins\:100,300,500,600,700`,
+          `Helvetica\:100,300,500,600,700`,
+        ],
+        display: 'swap',
+      },
+    },
+    // When you have your key, uncomment and add here
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     trackingId: process.env.GATSBY_GOOGLE_ANALYTICS_ID,
+    //   },
+    // },
   ],
-}
+};
